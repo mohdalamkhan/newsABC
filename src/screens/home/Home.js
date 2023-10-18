@@ -1,3 +1,118 @@
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import TabViewExample from './tabView/TabView';
+import DrawerNavigator from '../../navigation/drawerNavigator/DrawerNavigator';
+
+const newsData = [
+  {
+    id: '1',
+    image: 'https://example.com/news1.jpg',
+    title: 'What is Lorem Ipsum?',
+    description:
+      'What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsum',
+  },
+  {
+    id: '2',
+    title: 'Why do we use it?',
+    description:
+      'This is the description for News Headline What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsu',
+    image: 'https://example.com/news2.jpg',
+  },
+  {
+    id: '3',
+    title: 'Where does it come from?',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
+    image: 'https://example.com/news3.jpg',
+  },
+  // Add more news items
+];
+
+const Home = () => {
+  const renderItem = ({item}) => (
+    <TouchableOpacity style={styles.newsItem}>
+      <View>
+        <Image source={{uri: item.image}} style={styles.newsImage} />
+        <View style={styles.newsText}>
+          <Text style={styles.newsTitle}>{item.title}</Text>
+          <Text style={styles.newsDescription}>{item.description}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.headerBox}>
+        <DrawerNavigator />
+        <Text style={styles.headerText}>NATIONAL REVIEW</Text>
+      </View>
+      {/* <TabViewExample /> */}
+      <FlatList
+        data={newsData}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  newsItem: {
+    flexDirection: 'row',
+    borderBottomColor: '#ccc',
+    // marginHorizontal: 10,
+    // marginVertical: 10,
+    marginLeft: 15,
+  },
+  newsImage: {
+    width: '100%',
+    height: 250,
+    backgroundColor: 'blue',
+  },
+  newsText: {
+    // flex: 1,
+  },
+  newsTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    marginHorizontal: 5,
+  },
+  newsDescription: {
+    fontSize: 14,
+    marginVertical: 5,
+    marginHorizontal: 5,
+  },
+  headerBox: {
+    backgroundColor: '#000',
+    width: '100%',
+    height: '10%',
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginVertical: 20,
+    fontFamily: 'sans-serif-medium',
+  },
+});
+
+export default Home;
+
 // import {
 //   View,
 //   Text,
@@ -215,119 +330,3 @@
 //     flexDirection: 'row',
 //   },
 // });
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import TabViewExample from './tabView/TabView';
-
-const newsData = [
-  {
-    id: '1',
-    image: 'https://example.com/news1.jpg',
-    title: 'What is Lorem Ipsum?',
-    description:
-      'What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsum',
-  },
-  {
-    id: '2',
-    title: 'Why do we use it?',
-    description:
-      'This is the description for News Headline What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsum What is Lorem Ipsu',
-    image: 'https://example.com/news2.jpg',
-  },
-  {
-    id: '3',
-    title: 'Where does it come from?',
-    description:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
-    image: 'https://example.com/news3.jpg',
-  },
-  // Add more news items
-];
-
-const Home = () => {
-  const renderItem = ({item}) => (
-    <TouchableOpacity style={styles.newsItem}>
-      <View>
-        <Image source={{uri: item.image}} style={styles.newsImage} />
-        <View style={styles.newsText}>
-          <Text style={styles.newsTitle}>{item.title}</Text>
-          <Text style={styles.newsDescription}>{item.description}</Text>
-        </View>
-      </View>
-
-      {/* <View style={styles.newsImage}>
-        <Image source={{uri: item.image}} style={styles.newsImage} />
-      </View>
-      <View style={styles.newsText}>
-        <Text style={styles.newsTitle}>{item.title}</Text>
-        <Text style={styles.newsDescription}>{item.description}</Text>
-      </View> */}
-    </TouchableOpacity>
-  );
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.headerBox}>
-        <Text style={styles.headerText}>NATIONAL REVIEW</Text>
-      </View>
-      <TabViewExample />
-      <FlatList
-        data={newsData}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
-  newsItem: {
-    flexDirection: 'row',
-    // borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    padding: 10,
-  },
-  newsImage: {
-    width: '100%',
-    height: 250,
-    backgroundColor: 'blue',
-  },
-  newsText: {
-    // flex: 1,
-  },
-  newsTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  newsDescription: {
-    fontSize: 14,
-  },
-  headerBox: {
-    backgroundColor: '#000',
-    width: '100%',
-    height: '10%',
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginLeft: 10,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    marginVertical: 20,
-    fontFamily: 'sans-serif-medium',
-  },
-});
-
-export default Home;

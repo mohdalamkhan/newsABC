@@ -1,12 +1,15 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 const Splash = () => {
   const navigation = useNavigation();
-  setTimeout(() => {
-    navigation.navigate('home');
-  }, 2000);
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('home');
+    }, 2000);
+  }, []);
 
   return (
     <View style={styles.container}>
