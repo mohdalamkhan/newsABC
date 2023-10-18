@@ -274,6 +274,9 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.headerBox}>
+        <Text style={styles.headerText}>NATIONAL REVIEW</Text>
+      </View>
       <TabViewExample />
       <FlatList
         data={newsData}
@@ -309,6 +312,21 @@ const styles = StyleSheet.create({
   },
   newsDescription: {
     fontSize: 14,
+  },
+  headerBox: {
+    backgroundColor: '#000',
+    width: '100%',
+    height: '10%',
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginLeft: 10,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginVertical: 20,
+    fontFamily: 'sans-serif-medium',
   },
 });
 
