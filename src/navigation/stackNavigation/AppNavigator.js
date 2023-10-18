@@ -1,0 +1,30 @@
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import Splash from '../../screens/splash/Splash';
+import Home from '../../screens/home/Home';
+import Settings from '../../screens/settings/Settings';
+
+const Stack = createNativeStackNavigator();
+
+const AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="splash"
+          component={Splash}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="settings" component={Settings} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default AppNavigator;
